@@ -1,13 +1,20 @@
 {
   "businessName": "Floristería Sakura",
-  "tagline": "Arreglos Florales de Lujo, Rosas Frescas y Detalles Inolvidables en Santo Domingo",
+  "tagline": "Arreglos Florales de Lujo, Rosas Frescas Importadas & Detalles Exclusivos en Santo Domingo",
   "industry": "Floristería & Arreglos de Ocasión",
   "phone": "+18093019351",
   "whatsappMessage": "Hola Floristería Sakura, me interesa consultar disponibilidad y precios para un arreglo floral.",
   "currency": "RD$",
+  "theme": {
+    "accentColor": "emerald",
+    "variant": "dark-minimal",
+    "heroStyle": "spotlight"
+  },
   "features": {
     "showQuoter": true,
-    "showCatalog": true
+    "showCatalog": true,
+    "showTestimonials": true,
+    "showLocation": true
   },
   "services": [
     {
@@ -17,7 +24,8 @@
       "price": 2500,
       "unit": "ramo 12 uds",
       "icon": "ShieldCheck",
-      "popular": true
+      "popular": true,
+      "tag": "Más Vendido"
     },
     {
       "id": "sakura-srv-2",
@@ -26,7 +34,8 @@
       "price": 4200,
       "unit": "caja premium",
       "icon": "Network",
-      "popular": true
+      "popular": true,
+      "tag": "Edición Lujo"
     },
     {
       "id": "sakura-srv-3",
@@ -35,7 +44,8 @@
       "price": 2800,
       "unit": "bouquet grande",
       "icon": "Cpu",
-      "popular": false
+      "popular": false,
+      "tag": "Frescura Natural"
     },
     {
       "id": "sakura-srv-4",
@@ -44,7 +54,8 @@
       "price": 4800,
       "unit": "corona base",
       "icon": "Wrench",
-      "popular": false
+      "popular": false,
+      "tag": "Solemne"
     }
   ],
   "products": [
@@ -54,7 +65,7 @@
       "category": "Románticos",
       "description": "Caja de rosas rojas acompañadas de globo metalizado de helio según la ocasión.",
       "price": 5200,
-      "badge": "Más Vendido",
+      "badge": "Favorito",
       "image": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80"
     },
     {

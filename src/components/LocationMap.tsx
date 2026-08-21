@@ -6,67 +6,66 @@ import { siteConfig } from "@/lib/config";
 import { MapPin, Navigation, Clock, Phone, ExternalLink } from "lucide-react";
 
 export const LocationMap: React.FC = () => {
+  if (!siteConfig.features.showLocation) return null;
   const { location, phone, businessName } = siteConfig;
 
-  // OpenStreetMap embed iframe URL based on lat & lng
   const mapEmbedUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${location.lng - 0.01}%2C${location.lat - 0.01}%2C${location.lng + 0.01}%2C${location.lat + 0.01}&layer=mapnik&marker=${location.lat}%2C${location.lng}`;
 
   return (
-    <section id="ubicacion" className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="ubicacion" className="py-24 relative border-t border-white/[0.08]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Location Info Card (5 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-5 glass-panel rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-gray-800"
+            className="lg:col-span-5 resend-card p-6 sm:p-8 flex flex-col justify-between"
           >
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-4">
-                <MapPin className="w-3.5 h-3.5" />
-                Ubicación & Atención
-              </div>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-neutral-500 block mb-2">
+                Ubicación Física
+              </span>
 
-              <h2 className="text-3xl font-extrabold text-white tracking-tight mb-6">
-                Visítanos o Solicita Atención en Sitio
+              <h2 className="text-2xl font-extrabold text-white tracking-tight mb-6">
+                Visítanos o Solicita Atención
               </h2>
 
-              <div className="space-y-6">
+              <div className="space-y-5">
                 {/* Address */}
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5" />
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300 flex items-center justify-center shrink-0">
+                    <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs text-gray-400 font-medium block">Dirección Principal</span>
-                    <p className="text-white font-semibold text-sm mt-0.5">{location.address}</p>
+                    <span className="text-[10px] font-mono text-neutral-500 uppercase block">Dirección</span>
+                    <p className="text-white text-xs font-medium mt-0.5">{location.address}</p>
                   </div>
                 </div>
 
                 {/* Schedule */}
                 {location.schedule && (
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                      <Clock className="w-5 h-5" />
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300 flex items-center justify-center shrink-0">
+                      <Clock className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-xs text-gray-400 font-medium block">Horario de Servicio</span>
-                      <p className="text-white font-semibold text-sm mt-0.5">{location.schedule}</p>
+                      <span className="text-[10px] font-mono text-neutral-500 uppercase block">Horario de Atención</span>
+                      <p className="text-white text-xs font-medium mt-0.5">{location.schedule}</p>
                     </div>
                   </div>
                 )}
 
                 {/* Phone */}
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5" />
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300 flex items-center justify-center shrink-0">
+                    <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-xs text-gray-400 font-medium block">Teléfono Directo</span>
+                    <span className="text-[10px] font-mono text-neutral-500 uppercase block">Teléfono Directo</span>
                     <a
                       href={`tel:${phone}`}
-                      className="text-white font-semibold text-sm mt-0.5 hover:text-blue-400 transition-colors"
+                      className="text-white font-mono text-xs hover:underline"
                     >
                       {phone}
                     </a>
@@ -76,16 +75,16 @@ export const LocationMap: React.FC = () => {
             </div>
 
             {/* Navigation Buttons */}
-            <div className="pt-8 border-t border-gray-800/80 flex flex-col sm:flex-row gap-3 mt-8">
+            <div className="pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row gap-2.5 mt-6">
               {location.wazeUrl && (
                 <a
                   href={location.wazeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-3 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-gray-950 font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-md"
+                  className="flex-1 py-2.5 px-3 rounded-lg bg-white text-black font-bold text-xs flex items-center justify-center gap-1.5 transition-all"
                 >
-                  <Navigation className="w-4 h-4 fill-gray-950" />
-                  Navegar con Waze
+                  <Navigation className="w-3.5 h-3.5 fill-black" />
+                  Waze
                 </a>
               )}
 
@@ -94,30 +93,30 @@ export const LocationMap: React.FC = () => {
                   href={location.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-3 px-4 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 border border-gray-700 transition-all"
+                  className="flex-1 py-2.5 px-3 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300 hover:text-white font-medium text-xs flex items-center justify-center gap-1.5 transition-all"
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-3.5 h-3.5" />
                   Google Maps
                 </a>
               )}
             </div>
           </motion.div>
 
-          {/* Interactive Map Frame (7 cols) */}
+          {/* OpenStreetMap Frame (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-7 glass-panel rounded-2xl overflow-hidden min-h-[350px] border border-gray-800 relative group"
+            className="lg:col-span-7 resend-card overflow-hidden min-h-[340px] relative group"
           >
             <iframe
               title={`Mapa de ${businessName}`}
               width="100%"
               height="100%"
-              className="w-full h-full min-h-[380px] grayscale contrast-125 opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+              className="w-full h-full min-h-[340px] filter invert contrast-125 opacity-70 group-hover:opacity-90 transition-opacity"
               src={mapEmbedUrl}
             />
-            <div className="absolute top-4 right-4 bg-gray-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-gray-800 text-xs text-gray-300 font-medium pointer-events-none">
+            <div className="absolute top-4 right-4 bg-black/90 border border-white/10 px-3 py-1.5 rounded-lg text-xs font-mono text-neutral-300 pointer-events-none">
               📍 {businessName}
             </div>
           </motion.div>

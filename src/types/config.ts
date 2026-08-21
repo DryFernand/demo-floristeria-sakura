@@ -6,6 +6,7 @@ export interface ServiceItem {
   unit?: string;
   icon?: string;
   popular?: boolean;
+  tag?: string;
 }
 
 export interface ProductItem {
@@ -42,9 +43,17 @@ export interface LocationConfig {
   schedule?: string;
 }
 
+export interface ThemeConfig {
+  accentColor: "blue" | "emerald" | "amber" | "rose" | "purple" | "cyan";
+  variant: "dark-minimal" | "resend-slate" | "monochrome-glow";
+  heroStyle: "spotlight" | "split" | "minimal";
+}
+
 export interface FeaturesConfig {
   showQuoter: boolean;
   showCatalog: boolean;
+  showTestimonials?: boolean;
+  showLocation?: boolean;
 }
 
 export interface SiteConfig {
@@ -54,6 +63,7 @@ export interface SiteConfig {
   phone: string;
   whatsappMessage: string;
   currency: string;
+  theme?: ThemeConfig;
   features: FeaturesConfig;
   services: ServiceItem[];
   products: ProductItem[];

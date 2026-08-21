@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { siteConfig, formatWhatsAppUrl } from "@/lib/config";
-import { ArrowRight, Calculator, ShoppingBag, Star, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, Calculator, ShoppingBag, Star, ShieldCheck, Sparkles } from "lucide-react";
 
 interface HeroProps {
   onOpenCatalog?: () => void;
@@ -16,120 +16,109 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCatalog }) => {
   );
 
   return (
-    <section id="inicio" className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
-      {/* Background Decorative Glow Blobs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[120px] pointer-events-none" />
+    <section id="inicio" className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden bg-grid-pattern">
+      {/* Resend Top Spotlight Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-radial-gradient opacity-60 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          {/* Animated Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs sm:text-sm font-semibold mb-6"
-          >
-            <Zap className="w-4 h-4 fill-blue-400" />
-            <span>Atención Inmediata & Transparencia en Precios</span>
-          </motion.div>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+        {/* Monospace Pill Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-900/90 border border-white/10 text-neutral-300 text-xs font-mono mb-8 backdrop-blur-sm"
+        >
+          <Sparkles className="w-3.5 h-3.5 text-neutral-400" />
+          <span>{siteConfig.industry}</span>
+          <span className="text-neutral-600">•</span>
+          <span className="text-emerald-400 font-semibold">Respuesta Inmediata</span>
+        </motion.div>
 
-          {/* Main Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.1]"
-          >
-            {siteConfig.businessName}
-            <span className="block mt-2 bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-300 bg-clip-text text-transparent">
-              {siteConfig.industry}
-            </span>
-          </motion.h1>
-
-          {/* Tagline / Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-6 text-lg sm:text-xl text-gray-300 font-normal leading-relaxed"
-          >
+        {/* Headline with Vercel Gradient */}
+        <motion.h1
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08]"
+        >
+          {siteConfig.businessName}
+          <span className="block mt-2 bg-gradient-to-b from-neutral-100 via-neutral-300 to-neutral-500 bg-clip-text text-transparent font-normal text-3xl sm:text-5xl md:text-6xl">
             {siteConfig.tagline}
-          </motion.p>
+          </span>
+        </motion.h1>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            {siteConfig.features.showQuoter && (
-              <a
-                href="#cotizador"
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-base flex items-center justify-center gap-2 shadow-xl shadow-blue-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
-              >
-                <Calculator className="w-5 h-5" />
-                Cotizar Ahora ({siteConfig.currency})
-              </a>
-            )}
-
-            {siteConfig.features.showCatalog && onOpenCatalog && (
-              <button
-                onClick={onOpenCatalog}
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gray-800/90 hover:bg-gray-700/90 text-gray-100 font-bold text-base flex items-center justify-center gap-2 border border-gray-700/80 hover:border-cyan-500/50 shadow-lg transition-all"
-              >
-                <ShoppingBag className="w-5 h-5 text-cyan-400" />
-                Ver Catálogo
-              </button>
-            )}
-
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5"
+        >
+          {siteConfig.features.showQuoter && (
             <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold text-base flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 hover:scale-[1.02] transition-all"
+              href="#cotizador"
+              className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white text-black font-bold text-sm flex items-center justify-center gap-2 hover:bg-neutral-200 transition-all shadow-md active:scale-95"
             >
-              Consulta WhatsApp
-              <ArrowRight className="w-5 h-5" />
+              <Calculator className="w-4 h-4" />
+              Cotizar en Tiempo Real ({siteConfig.currency})
             </a>
-          </motion.div>
+          )}
 
-          {/* Social Proof Mini Bar */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 pt-8 border-t border-gray-800/60 grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-xl mx-auto text-center"
+          {siteConfig.features.showCatalog && onOpenCatalog && (
+            <button
+              onClick={onOpenCatalog}
+              className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-neutral-200 font-medium text-sm flex items-center justify-center gap-2 border border-white/10 hover:border-white/20 transition-all"
+            >
+              <ShoppingBag className="w-4 h-4 text-neutral-400" />
+              Explorar Catálogo
+            </button>
+          )}
+
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-neutral-900/80 hover:bg-neutral-800 text-neutral-300 font-medium text-sm flex items-center justify-center gap-2 border border-white/10 transition-all"
           >
-            <div>
-              <div className="flex items-center justify-center gap-1 text-amber-400">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-amber-400" />
-                ))}
-              </div>
-              <span className="block mt-1 font-bold text-white text-lg">
-                {siteConfig.socialProof.rating.toFixed(1)} / 5.0
-              </span>
-              <span className="text-xs text-gray-400">Valoración Clientes</span>
-            </div>
+            Contacto WhatsApp
+            <ArrowRight className="w-4 h-4 text-neutral-400" />
+          </a>
+        </motion.div>
 
-            <div>
-              <span className="block font-bold text-white text-lg">
-                +{siteConfig.socialProof.reviewsCount} Reseñas
-              </span>
-              <span className="text-xs text-gray-400">Verificadas</span>
+        {/* Stats Row (Minimalist Monochrome) */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-16 pt-8 border-t border-white/[0.08] grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-lg mx-auto text-center"
+        >
+          <div>
+            <div className="flex items-center justify-center gap-1 text-amber-400">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
+              ))}
             </div>
+            <span className="block mt-1.5 font-mono font-bold text-white text-base">
+              {siteConfig.socialProof.rating.toFixed(1)} / 5.0
+            </span>
+            <span className="text-[11px] text-neutral-500 font-mono">Valoración de Clientes</span>
+          </div>
 
-            <div className="col-span-2 sm:col-span-1">
-              <div className="flex items-center justify-center gap-1.5 text-cyan-400 font-bold text-lg">
-                <ShieldCheck className="w-5 h-5 text-cyan-400" />
-                <span>Garantía</span>
-              </div>
-              <span className="text-xs text-gray-400">Servicios Asegurados</span>
+          <div>
+            <span className="block font-mono font-bold text-white text-base">
+              +{siteConfig.socialProof.reviewsCount}
+            </span>
+            <span className="text-[11px] text-neutral-500 font-mono">Opiniones Verificadas</span>
+          </div>
+
+          <div className="col-span-2 sm:col-span-1">
+            <div className="flex items-center justify-center gap-1.5 text-neutral-300 font-mono text-sm font-bold">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>Garantía</span>
             </div>
-          </motion.div>
-        </div>
+            <span className="text-[11px] text-neutral-500 font-mono">Transparencia Total</span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

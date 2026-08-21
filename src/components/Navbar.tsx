@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { siteConfig, formatWhatsAppUrl } from "@/lib/config";
-import { ShoppingBag, Calculator, MessageCircle, Menu, X, PhoneCall } from "lucide-react";
+import { ShoppingBag, Calculator, MessageCircle, Menu, X, ArrowUpRight } from "lucide-react";
 
 interface NavbarProps {
   onOpenCatalog?: () => void;
@@ -29,55 +29,61 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCatalog }) => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled ? "glass-panel py-3 shadow-2xl" : "bg-transparent py-5"
+        scrolled
+          ? "bg-black/80 backdrop-blur-md border-b border-white/[0.08] py-3.5"
+          : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Brand Logo & Name */}
         <a href="#inicio" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/30 group-hover:scale-105 transition-transform">
+          <div className="w-8 h-8 rounded-lg bg-white text-black font-black text-sm flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
             {siteConfig.businessName.charAt(0)}
           </div>
-          <div>
-            <span className="font-extrabold text-lg sm:text-xl tracking-tight text-white group-hover:text-blue-400 transition-colors">
+          <div className="flex flex-col">
+            <span className="font-bold text-sm tracking-tight text-white group-hover:text-neutral-300 transition-colors">
               {siteConfig.businessName}
             </span>
-            <span className="block text-xs text-gray-400 font-medium truncate max-w-[180px] sm:max-w-xs">
+            <span className="text-[11px] text-neutral-500 font-mono tracking-tight truncate max-w-[160px] sm:max-w-xs">
               {siteConfig.industry}
             </span>
           </div>
         </a>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300">
-          <a href="#inicio" className="hover:text-blue-400 transition-colors">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-6 text-xs font-medium text-neutral-400">
+          <a href="#inicio" className="hover:text-white transition-colors">
             Inicio
           </a>
-          <a href="#servicios" className="hover:text-blue-400 transition-colors">
+          <a href="#servicios" className="hover:text-white transition-colors">
             Servicios
           </a>
           {siteConfig.features.showQuoter && (
-            <a href="#cotizador" className="hover:text-blue-400 transition-colors flex items-center gap-1.5">
-              <Calculator className="w-4 h-4 text-blue-400" />
+            <a href="#cotizador" className="hover:text-white transition-colors flex items-center gap-1">
+              <Calculator className="w-3.5 h-3.5 text-neutral-400" />
               Cotizador
             </a>
           )}
-          <a href="#testimonios" className="hover:text-blue-400 transition-colors">
-            Opiniones
-          </a>
-          <a href="#ubicacion" className="hover:text-blue-400 transition-colors">
-            Ubicación
-          </a>
+          {siteConfig.features.showTestimonials && (
+            <a href="#testimonios" className="hover:text-white transition-colors">
+              Reseñas
+            </a>
+          )}
+          {siteConfig.features.showLocation && (
+            <a href="#ubicacion" className="hover:text-white transition-colors">
+              Ubicación
+            </a>
+          )}
         </nav>
 
-        {/* Action Buttons */}
+        {/* Action Buttons (Vercel Style: High Contrast Primary CTA) */}
         <div className="hidden lg:flex items-center gap-3">
           {siteConfig.features.showCatalog && onOpenCatalog && (
             <button
               onClick={onOpenCatalog}
-              className="px-4 py-2 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-sm font-semibold flex items-center gap-2 border border-gray-700/60 transition-all hover:border-gray-500"
+              className="px-3.5 py-1.5 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-neutral-200 text-xs font-medium flex items-center gap-1.5 border border-white/10 hover:border-white/20 transition-all"
             >
-              <ShoppingBag className="w-4 h-4 text-cyan-400" />
+              <ShoppingBag className="w-3.5 h-3.5 text-neutral-400" />
               Catálogo
             </button>
           )}
@@ -86,10 +92,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCatalog }) => {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white text-sm font-semibold flex items-center gap-2 shadow-lg shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            className="px-4 py-1.5 rounded-lg bg-white hover:bg-neutral-200 text-black text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm active:scale-95"
           >
-            <MessageCircle className="w-4 h-4 fill-white" />
-            WhatsApp
+            <span>WhatsApp</span>
+            <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
           </a>
         </div>
 
@@ -98,18 +104,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCatalog }) => {
           {siteConfig.features.showCatalog && onOpenCatalog && (
             <button
               onClick={onOpenCatalog}
-              className="p-2 rounded-lg bg-gray-800 text-gray-200"
+              className="p-2 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300"
               aria-label="Abrir Catálogo"
             >
-              <ShoppingBag className="w-5 h-5 text-cyan-400" />
+              <ShoppingBag className="w-4 h-4 text-neutral-400" />
             </button>
           )}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg bg-gray-800 text-gray-200 hover:bg-gray-700"
+            className="p-2 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300"
             aria-label="Menú principal"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
@@ -117,22 +123,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCatalog }) => {
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          className="md:hidden glass-panel border-b border-gray-800 px-6 py-5 mt-2 space-y-4 shadow-xl"
+          exit={{ opacity: 0, y: -8 }}
+          className="md:hidden bg-neutral-950 border-b border-white/10 px-6 py-5 mt-2 space-y-4 shadow-2xl"
         >
           <a
             href="#inicio"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-gray-200 font-medium hover:text-blue-400"
+            className="block text-neutral-300 text-sm font-medium hover:text-white"
           >
             Inicio
           </a>
           <a
             href="#servicios"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-gray-200 font-medium hover:text-blue-400"
+            className="block text-neutral-300 text-sm font-medium hover:text-white"
           >
             Servicios
           </a>
@@ -140,43 +146,40 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCatalog }) => {
             <a
               href="#cotizador"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-gray-200 font-medium hover:text-blue-400 flex items-center gap-2"
+              className="block text-neutral-300 text-sm font-medium hover:text-white flex items-center gap-2"
             >
-              <Calculator className="w-4 h-4 text-blue-400" />
+              <Calculator className="w-4 h-4 text-neutral-400" />
               Cotizador Interactivo
             </a>
           )}
-          <a
-            href="#testimonios"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-gray-200 font-medium hover:text-blue-400"
-          >
-            Opiniones
-          </a>
-          <a
-            href="#ubicacion"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-gray-200 font-medium hover:text-blue-400"
-          >
-            Ubicación
-          </a>
-
-          <div className="pt-3 border-t border-gray-800 flex flex-col gap-2">
+          {siteConfig.features.showTestimonials && (
             <a
-              href={`tel:${siteConfig.phone}`}
-              className="w-full py-2.5 rounded-lg bg-gray-800 text-center font-semibold text-sm text-gray-200 flex items-center justify-center gap-2"
+              href="#testimonios"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-neutral-300 text-sm font-medium hover:text-white"
             >
-              <PhoneCall className="w-4 h-4 text-blue-400" />
-              Llamar ({siteConfig.phone})
+              Reseñas
             </a>
+          )}
+          {siteConfig.features.showLocation && (
+            <a
+              href="#ubicacion"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-neutral-300 text-sm font-medium hover:text-white"
+            >
+              Ubicación
+            </a>
+          )}
+
+          <div className="pt-3 border-t border-neutral-900 flex flex-col gap-2">
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-2.5 rounded-lg bg-emerald-600 text-center font-semibold text-sm text-white flex items-center justify-center gap-2"
+              className="w-full py-2.5 rounded-lg bg-white text-black font-semibold text-xs text-center flex items-center justify-center gap-2"
             >
-              <MessageCircle className="w-4 h-4 fill-white" />
-              Contactar por WhatsApp
+              <MessageCircle className="w-4 h-4" />
+              WhatsApp Directo
             </a>
           </div>
         </motion.div>
