@@ -1,0 +1,126 @@
+{
+  "businessName": "Floristería Sakura",
+  "tagline": "Arreglos Florales de Lujo, Rosas Frescas y Detalles Inolvidables en Santo Domingo",
+  "industry": "Floristería & Arreglos de Ocasión",
+  "phone": "+18093019351",
+  "whatsappMessage": "Hola Floristería Sakura, me interesa consultar disponibilidad y precios para un arreglo floral.",
+  "currency": "RD$",
+  "features": {
+    "showQuoter": true,
+    "showCatalog": true
+  },
+  "services": [
+    {
+      "id": "sakura-srv-1",
+      "name": "Ramo Clásico de 12 Rosas Importadas",
+      "description": "Rosas rojas frescas de tallo largo con follaje fino y envoltura de papel kraft o fino.",
+      "price": 2500,
+      "unit": "ramo 12 uds",
+      "icon": "ShieldCheck",
+      "popular": true
+    },
+    {
+      "id": "sakura-srv-2",
+      "name": "Arreglo Floral Premium en Caja Velvet",
+      "description": "Exclusiva caja cilíndrica con 24 rosas seleccionadas, follaje exótico y cinta personalizada.",
+      "price": 4200,
+      "unit": "caja premium",
+      "icon": "Network",
+      "popular": true
+    },
+    {
+      "id": "sakura-srv-3",
+      "name": "Bouquet Radiante de Girasoles & Flores Silvestres",
+      "description": "Diseño floral vibrante con girasoles frescos, gerberas y toques de baby breath.",
+      "price": 2800,
+      "unit": "bouquet grande",
+      "icon": "Cpu",
+      "popular": false
+    },
+    {
+      "id": "sakura-srv-4",
+      "name": "Arreglo de Condolencias / Corona Fúnebre",
+      "description": "Elegante arreglo en tonos blancos e hidrangeas con cinta impresa con el mensaje deseado.",
+      "price": 4800,
+      "unit": "corona base",
+      "icon": "Wrench",
+      "popular": false
+    }
+  ],
+  "products": [
+    {
+      "id": "sakura-prod-1",
+      "name": "Box Romántico Sakura 24 Rosas & Globo",
+      "category": "Románticos",
+      "description": "Caja de rosas rojas acompañadas de globo metalizado de helio según la ocasión.",
+      "price": 5200,
+      "badge": "Más Vendido",
+      "image": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "sakura-prod-2",
+      "name": "Ramo Primavera Lilium & Rosas Pasteles",
+      "category": "Cumpleaños",
+      "description": "Combinación suave de liliums aromáticos y rosas rosadas ideal para felicitaciones.",
+      "price": 3400,
+      "badge": "Recomendado",
+      "image": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "sakura-prod-3",
+      "name": "Combo Dulce Amor: Flores, Peluche & Bombones",
+      "category": "Detalles Especiales",
+      "description": "Arreglo mediano de rosas con peluche afelpado y caja de chocolates de regalo.",
+      "price": 4500,
+      "badge": "Top Regalo",
+      "image": "https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "sakura-prod-4",
+      "name": "Caja Corazón de 18 Rosas & Orquídea",
+      "category": "Lujo",
+      "description": "Exclusiva presentación en forma de corazón con rosas de grado de exportación.",
+      "price": 6000,
+      "badge": "Edición Lujo",
+      "image": "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80"
+    }
+  ],
+  "socialProof": {
+    "rating": 4.8,
+    "reviewsCount": 142,
+    "testimonials": [
+      {
+        "id": "t-sakura-1",
+        "name": "Laura Pimentel",
+        "role": "Cliente Habitual (Gascue)",
+        "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80",
+        "text": "Las flores duran muchísimo tiempo frescas y el detalle en el envoltorio es hermoso. Mi floristería de confianza en Gascue.",
+        "stars": 5
+      },
+      {
+        "id": "t-sakura-2",
+        "name": "Manuel Tejeda",
+        "role": "Cliente Corporativo",
+        "avatar": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80",
+        "text": "El cotizador en línea me permitió armar el arreglo para el aniversario de la empresa de inmediato sin tener que llamar.",
+        "stars": 5
+      },
+      {
+        "id": "t-sakura-3",
+        "name": "Patricia Gómez",
+        "role": "Envío a Domicilio",
+        "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+        "text": "Super puntuales con la entrega y el ramo quedó exactamente como en la foto. Recomendados 100%.",
+        "stars": 5
+      }
+    ]
+  },
+  "location": {
+    "address": "Av. Dr. Delgado No. 39, Gascue, Santo Domingo, Rep. Dom.",
+    "lat": 18.4715,
+    "lng": -69.897,
+    "wazeUrl": "https://waze.com/ul?q=Floristeria+Sakura+Santo+Domingo",
+    "googleMapsUrl": "https://maps.google.com/?q=Floristeria+Sakura+Santo+Domingo",
+    "schedule": "Lun - Vie: 8:00 AM - 6:00 PM | Sáb: 8:00 AM - 1:00 PM"
+  }
+}
